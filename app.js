@@ -13,7 +13,7 @@ const db = mysql.createConnection({
     database: process.env.DB_NAME,
     port: 61001, // <=== هذا هو التعديل الضروري!
     waitForConnections: true,
-    connectionLimit: 10,
+    connectionLimit: 3,
     connectTimeout: 20000 // يفضل لإطالة مهلة الانتظار
 });
 
@@ -2024,5 +2024,6 @@ app.listen(port, () => {
     console.log(`Server listening at ${port}`);
 
 });
+
 
 
