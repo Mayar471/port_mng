@@ -42,7 +42,7 @@ app.get('/login', (req, res) => {
 app.post('/api/login', (req, res) => {
     const { email, password } = req.body;
 
-    const query = 'SELECT role FROM Users WHERE email = ? AND password = ?';
+    const query = 'SELECT role FROM users WHERE email = ? AND password = ?';
 
     db.query(query, [email, password], (err, results) => {
         if (err) {
@@ -72,7 +72,7 @@ app.get('/api/users', (req, res) => {
     const query = `
         SELECT 
             user_id, email, role, full_name
-        FROM Users 
+        FROM users 
         ORDER BY user_id DESC;
     `;
 
@@ -89,7 +89,7 @@ app.get('/api/users', (req, res) => {
 
 app.post('/api/users', async (req, res) => {
     const { username , email, password, role } = req.body;
-    const checkEmailQuery = 'SELECT * FROM Users WHERE email = ?';
+    const checkEmailQuery = 'SELECT * FROM users WHERE email = ?';
     db.query(checkEmailQuery, [email], (err, results) => {
         if (err) {
             console.error('Database error during email check:', err);
@@ -135,7 +135,7 @@ app.delete('/api/users/delete-by-email', (req, res) => {
         return res.status(400).json({ success: false, message: 'الرجاء إرسال البريد الإلكتروني للحذف.' });
     }
 
-    const query = 'DELETE FROM Users WHERE email = ?';
+    const query = 'DELETE FROM users WHERE email = ?';
 
     db.query(query, [email], (err, result) => {
         if (err) {
@@ -2024,3 +2024,4 @@ app.listen(port, () => {
     console.log(`Server listening at ${port}`);
 
 });
+
