@@ -4,15 +4,17 @@ const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 const app = express();
-const port = process.env.PORT || 61001;
+const port = process.env.PORT || 3000;
 
 const db = mysql.createConnection({
-    host: process.env.DB_HOST,
+   host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
+    port: 61001, // <=== هذا هو التعديل الضروري!
     waitForConnections: true,
-    connectionLimit: 10
+    connectionLimit: 10,
+    connectTimeout: 20000 // يفضل لإطالة مهلة الانتظار
 });
 
 db.connect(err => {
@@ -2020,4 +2022,5 @@ app.get('/api/inventory/transactions/:id', (req, res) => {
 });
 app.listen(port, () => {
     console.log(`Server listening at ${port}`);
+
 });
