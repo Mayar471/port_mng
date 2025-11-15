@@ -483,7 +483,7 @@ app.get('/api/machines', (req, res) => {
             m.*, 
             s.name AS supplier_name 
         FROM Machines m
-        LEFT JOIN Suppliers s ON m.supplier_id = s.supplier_id
+        LEFT JOIN suppliers s ON m.supplier_id = s.supplier_id
         WHERE 1=1
     `;
     let values = [];
@@ -556,7 +556,7 @@ app.post('/api/machines', (req, res) => {
 
     // 3. بناء استعلام INSERT INTO
     const query = `
-        INSERT INTO Machines (
+        INSERT INTO machines (
             machine_code, machine_name, category, location_id, status, 
             operating_hours, purchase_date, last_maintenance_date, 
             next_maintenance_date, supplier_id, facility_name, notes
