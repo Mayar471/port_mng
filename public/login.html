@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - نظام الإدارة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheets/setup.css"> 
+  
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h2 class="title">تسجيل الدخول</h2>
+            <p class="subtitle">نظام صيانة المرافق البحرية</p>
+
+            <div id="error-message-box"></div> 
+            
+            <form action="/api/login" method="POST">
+                
+                <div class="input-group">
+                    <label for="email">البريد الإلكتروني</label>
+                    <input type="email" id="email" name="email" required placeholder="أدخل بريدك الإلكتروني">
+                </div>
+
+                <div class="input-group">
+                    <label for="password">كلمة المرور</label>
+                    <input type="password" id="password" name="password" required placeholder="أدخل كلمة المرور">
+                </div>
+
+                <button type="submit" class="login-button">دخول</button>
+
+            </form>
+            
+            </div>
+    </div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        
+        const errorMessageDiv = document.getElementById('error-message-box');
+        
+        const errorParam = params.get('error');
+
+        let message = '';
+
+        if (errorParam === 'InvalidCredentials') {
+            message = 'خطأ: البريد الإلكتروني أو كلمة المرور غير صحيحة. حاول مجدداً.';
+        } else if (errorParam === 'DatabaseError') {
+            message = 'حدث خطأ في الاتصال بقاعدة البيانات. يرجى مراجعة المسؤول.';
+        }
+        
+        if (message && errorMessageDiv) { 
+            errorMessageDiv.textContent = message;
+            errorMessageDiv.style.display = 'block'; 
+        }
+        
+        if (errorParam) {
+            params.delete('error');
+            const newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
+            window.history.replaceState({}, document.title, newUrl);
+        }
+    });
+</script>
+</body>
+</html>

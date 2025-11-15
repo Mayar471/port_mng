@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>لوحة تحكم المدير</title>
+    <link rel="stylesheet" href="stylesheets/admin.css"> 
+    
+    <style>
+        .main {
+            margin-right: 240px; 
+            padding: 20px;
+            min-height: 100vh;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column; /* لترتيب العناصر الداخلية عمودياً */
+        }
+
+        #content-iframe {
+            width: 100%;
+            flex-grow: 1; /* يملأ المساحة المتبقية من الـ main */
+            border: none;
+            background-color: #0f172a; 
+            margin-top: 20px;
+        }
+        
+        .tab-content {
+             width: 100%;
+             box-sizing: border-box;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2>⚙️ لوحة المدير</h2>
+        
+        <button onclick="showTabContent('dashboard')" class="tab-btn active" data-target="dashboard">الرئيسية</button>
+        <button onclick="showTabContent('users')" class="tab-btn" data-target="users">المستخدمون</button>
+        
+        <button class="tab-btn" data-target="warehouses" data-url="/warehouse.html">المستودعات</button>
+        <button class="tab-btn" data-target="vehicles" data-url="/vehicles.html">الآليات</button>
+        <button class="tab-btn" data-target="suppliers" data-url="/supllier.html">الموردون</button>
+    </div>
+    
+    <div class="main">
+        
+        <div id="dashboard" class="card tab-content">
+            <h3>مؤشرات عامة</h3>
+            <p>هنا سنضع الرسوم البيانية ومؤشرات الأداء قريبًا.</p>
+        </div>
+
+        <div id="users" class="card tab-content hidden">
+            <div id="users-table-body-alert" class="alert hidden"></div> 
+            <h3>إدارة المستخدمين</h3>
+            <button class="btn btn-success" id="open-add-user-modal">➕ إضافة مستخدم</button>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#ID</th>
+                        <th>اسم المستخدم الكامل</th>
+                        <th>البريد الإلكتروني</th>
+                        <th>الصلاحية</th>
+                        <th>الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody id="users-table-body">
+                    </tbody>
+            </table>
+        </div>
+        
+        <iframe id="content-iframe" class="tab-content hidden" frameborder="0"></iframe>
+        
+    </div> 
+    
+    <div id="addUserModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>إضافة مستخدم جديد</h4>
+                <span class="close-btn" onclick="closeModal('addUserModal')">&times;</span>
+            </div>
+
+            <form id="add-user-form">
+                <div id="user-alert" class="alert alert-error hidden"></div>
+
+                <label for="username">اسم المستخدم:</label>
+                <input type="text" id="username" name="username" class="input" required>
+
+                <label for="email">البريد الإلكتروني:</label>
+                <input type="email" id="email" name="email" class="input" required>
+
+                <label for="password">كلمة المرور:</label>
+                <input type="password" id="password" name="password" class="input" required>
+
+                <label for="role">الصلاحية:</label>
+                <select id="role" name="role" class="input" required>
+                    <option value="admin">مدير (Admin)</option>
+                    <option value="supervisor">مشرف (Supervisor)</option>
+                    <option value="mechanic">فني (Mechanic)</option>
+                </select>
+
+                <button type="submit" class="btn btn-success" style="width: 100%; margin-top: 15px;">إضافة وحفظ</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts/admin.js"></script>
+</body>
+
+</html>

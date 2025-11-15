@@ -1,0 +1,139 @@
+:root {
+    --bg: #0f172a;
+    --card: #0b1220;
+    --accent: #06b6d4;
+    --muted: #94a3b8;
+    --success: #16a34a
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Tahoma, Arial;
+    background: #001827;
+    color: #e6eef6
+}
+
+.container {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 12px
+}
+
+.card {
+    background: #091524;
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 14px
+}
+
+.btn {
+    background: var(--accent);
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer
+}
+
+.btn.secondary {
+    background: transparent;
+    border: 1px solid #1e293b;
+    color: var(--muted)
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px
+}
+
+th,
+td {
+    padding: 8px;
+    border-bottom: 1px solid #1e293b;
+    font-size: 14px;
+    text-align: right
+}
+
+th {
+    color: var(--muted)
+}
+
+.input {
+    padding: 8px;
+    border: 1px solid #1e293b;
+    border-radius: 6px;
+    background: #0b1628;
+    color: #fff
+}
+
+.hidden {
+    display: none
+}
+
+.modal-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50
+}
+
+.modal {
+    background: #0b1628;
+    padding: 18px;
+    border-radius: 10px;
+    width: 360px;
+    max-width: 95%
+}
+
+.modal h3 {
+    margin-top: 0
+}
+
+.modal input,
+.modal select,
+.modal textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #1e293b;
+    background: transparent;
+    color: inherit;
+    margin-bottom: 8px
+}
+
+.small {
+    font-size: 12px;
+    color: var(--muted)
+}
+
+.img-thumb {
+    height: 48px;
+    border-radius: 6px;
+    border: 1px solid #123;
+    margin-left: 6px
+}
+
+.alert {
+    background: #3b1220;
+    padding: 8px;
+    border-radius: 6px;
+    color: #ffc1c1;
+    margin-bottom: 8px
+}
+#iss_item{color :#0f172a;}
+#req_item{color :#82a510;}

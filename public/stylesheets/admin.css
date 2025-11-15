@@ -1,0 +1,217 @@
+  body {
+            margin: 0;
+            font-family: Tahoma, Arial;
+            background: #0f172a;
+            color: #fff
+        }
+
+        .sidebar {
+            width: 230px;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            background: #0b1220;
+            padding: 15px
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+            color: #06b6d4;
+            font-size: 18px
+        }
+
+        .sidebar button {
+            width: 100%;
+            padding: 10px;
+            margin: 6px 0;
+            border: 0;
+            border-radius: 6px;
+            background: #13233b;
+            color: #fff;
+            cursor: pointer
+        }
+
+        .sidebar button.active {
+            background: #06b6d4;
+            color: #000
+        }
+
+        .main {
+            margin-right: 240px;
+            padding: 20px
+        }
+
+        .card {
+            background: #091524;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+            /* تنسيقات الجدول المنسق */
+            background-color: #091524;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .table th {
+            padding: 10px 8px;
+            background-color: #1e293b; /* لون رأس الجدول */
+            text-align: right;
+            font-weight: bold;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        .table td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #1e293b;
+            font-size: 14px
+        }
+        
+        .table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+
+        .btn {
+            padding: 7px 10px;
+            border: 0;
+            border-radius: 6px;
+            background: #06b6d4;
+            color: #000;
+            cursor: pointer;
+            margin: 3px;
+            font-size: 14px;
+        }
+        
+        .btn-success {
+            background: #10b981;
+            color: #fff;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: #fff;
+        }
+
+        .btn-warning {
+            background: #f59e0b;
+            color: #fff;
+        }
+
+        .input, select {
+            padding: 8px;
+            border: 1px solid #1e293b;
+            border-radius: 6px;
+            background: #0b1628;
+            color: #fff;
+            width: 100%;
+            box-sizing: border-box; /* لضمان أن العرض يشمل البادينغ */
+            margin-bottom: 10px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        .hidden {
+            display: none
+        }
+
+        /* تنسيق الـ Modal (النافذة المنبثقة) */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: none; /* مخفي بشكل افتراضي */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: #091524;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 10px;
+        }
+
+        .close-btn {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        .alert {
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .alert-error {
+            background-color: #fee2e2;
+            color: #ef4444;
+            border: 1px solid #fca5a5;
+        }
+        /* تنسيق إضافي للأدوار */
+        .role-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .role-admin { background-color: #f59e0b; color: #000; }
+        .role-supervisor { background-color: #22c55e; color: #000; }
+        .role-mechanic { background-color: #06b6d4; color: #000; }
+    /* ... باقي تنسيقات الـ CSS ... */
+
+.main {
+    margin-right: 240px; /* المسافة عن الـ sidebar */
+    padding: 20px;
+    height: 100vh; /* لضمان ملء ارتفاع الشاشة */
+    box-sizing: border-box;
+    display: flex; /* لتحسين ترتيب العناصر الداخلية */
+    flex-direction: column;
+}
+
+#content-iframe {
+    width: 100%;
+    /* 🛑 احتساب ارتفاع الإطار لملء المساحة المتبقية */
+    height: 100%; 
+    border: none;
+    background: #0f172a; /* لون الخلفية */
+}
+
+.card {
+    /* يجب تعديل ارتفاع الـ card لعدم التعارض مع الـ iframe */
+    /* إذا ظهر الـ dashboard، سيكون ارتفاعه تلقائي، وإلا فسيتم إخفاؤه */
+    flex-shrink: 0; /* لا ينكمش */
+}
+
+/* ... باقي التنسيقات ... */
