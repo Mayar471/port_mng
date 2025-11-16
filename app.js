@@ -482,7 +482,7 @@ app.get('/api/machines', (req, res) => {
         SELECT 
             m.*, 
             s.name AS supplier_name 
-        FROM Machines m
+        FROM machines m
         LEFT JOIN suppliers s ON m.supplier_id = s.supplier_id
         WHERE 1=1
     `;
@@ -2024,6 +2024,7 @@ app.listen(port, () => {
     console.log(`Server listening at ${port}`);
 
 });
+
 
 
 
