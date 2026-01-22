@@ -42,27 +42,34 @@ app.get('/login', (req, res) => {
 app.post('/api/login', (req, res) => {
     const { email, password } = req.body;
 
-    const query = 'SELECT role FROM users WHERE email = ? AND password = ?';
+    // ملاحظة: يفضل دائماً تشفير كلمة المرور وعدم مقارنتها كنص صريح
+    const query = 'SELECT role, name FROM users WHERE email = ? AND password = ?';
 
     db.query(query, [email, password], (err, results) => {
         if (err) {
             console.error(err);
-            return res.redirect('/login.html?error=DatabaseError');
+            // 500: خطأ في الخادم
+            return res.status(500).json({ 
+                success: false, 
+                message: 'حدث خطأ في قاعدة البيانات' 
+            });
         }
 
         if (results.length > 0) {
-            const userRole = results[0].role;
+            const user = results[0];
 
-            if (userRole === 'Admin') {
-                return res.redirect('/admin.html');
-            } else if (userRole === 'Supervisor') {
-                return res.redirect('/supervisor.html');
-            }
-            else 
-                 return res.redirect('/vehicles2.html');
+            // 200: عملية ناجحة
+            return res.status(200).json({
+                success: true,
+               
+            });
         }
 
-        return res.redirect('/login.html?error=InvalidCredentials');
+        // 401: غير مصرح له (بيانات خاطئة)
+        return res.status(401).json({ 
+            success: false, 
+           
+        });
     });
 });
 
@@ -2024,7 +2031,6 @@ app.listen(port, () => {
     console.log(`Server listening at ${port}`);
 
 });
-
 
 
 
