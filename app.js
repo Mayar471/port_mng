@@ -43,7 +43,7 @@ app.post('/api/login', (req, res) => {
     const { email, password } = req.body;
 
     // ملاحظة: يفضل دائماً تشفير كلمة المرور وعدم مقارنتها كنص صريح
-    const query = 'SELECT role, name FROM users WHERE email = ? AND password = ?';
+    const query = 'SELECT role FROM users WHERE email = ? AND password = ?';
 
     db.query(query, [email, password], (err, results) => {
         if (err) {
@@ -2031,6 +2031,7 @@ app.listen(port, () => {
     console.log(`Server listening at ${port}`);
 
 });
+
 
 
 
